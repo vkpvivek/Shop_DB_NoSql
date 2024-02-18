@@ -1,5 +1,6 @@
 const Product = require('../models/product');
 
+
 exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
     pageTitle: 'Add Product',
@@ -28,6 +29,8 @@ exports.postAddProduct = (req, res, next) => {
       console.log(err);
     });
 };
+
+
 
 exports.getEditProduct = (req, res, next) => {
   const editMode = req.query.edit;
@@ -97,3 +100,4 @@ exports.postDeleteProduct = (req, res, next) => {
     })
     .catch(err => console.log(err));
 };
+

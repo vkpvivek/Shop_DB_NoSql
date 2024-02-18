@@ -1,6 +1,7 @@
 const mongodb= require('mongodb');
 const MongoClient=mongodb.MongoClient;
 
+let _db;
 
 const mongoConnect =(callback) => {
     MongoClient.connect(
@@ -8,6 +9,7 @@ const mongoConnect =(callback) => {
     )
     .then(client =>{
         console.log('Connected!');
+        _db=client.db('Shop')
         callback(client);
     })
     .catch(err =>{
@@ -15,5 +17,15 @@ const mongoConnect =(callback) => {
     });
 };
 
-module.exports = mongoConnect;
+const getDb=()=>{
+    if (_db){
+        return _db;
+    }
+    throw 'No database found!';
+}
+
+exports.mongoConnect = mongoConnect;
+exports.getDb= getDb;
+
+// module.exports = mongoConnect;
 
