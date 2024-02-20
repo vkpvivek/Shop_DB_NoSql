@@ -27,7 +27,7 @@ exports.getProduct = (req, res, next) => {
   //     });
   //   })
   //   .catch(err => console.log(err));
-  Product.findByPk(prodId)
+  Product.findById(prodId)
     .then(product => {
       res.render('shop/product-detail', {
         product: product,
@@ -51,6 +51,8 @@ exports.getIndex = (req, res, next) => {
       console.log(err);
     });
 };
+
+
 
 exports.getCart = (req, res, next) => {
   //console.log(req.user.cart);
